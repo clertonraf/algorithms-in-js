@@ -1,0 +1,13 @@
+{
+  "name": "algorithms-in-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "quick-union-client.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --experimental-modules quick-union-client.mjs"
+  },
+  "author": "",
+  "license": "ISC"
+}
