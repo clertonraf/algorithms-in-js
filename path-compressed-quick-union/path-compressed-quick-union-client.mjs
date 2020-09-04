@@ -1,6 +1,6 @@
-import QuickUnion from './quick-union.mjs'
+import PathCompressedQuickUnion from './path-compressed-quick-union.mjs'
 
-const client = new QuickUnion(10)
+const client = new PathCompressedQuickUnion(10)
 
 client.union(4,3)
 

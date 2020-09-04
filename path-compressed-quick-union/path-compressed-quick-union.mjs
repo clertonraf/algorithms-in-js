@@ -1,11 +1,13 @@
-class QuickUnion {
+class PathCompressedQuickUnion {
 
   constructor(n) {
     this.id = new Array(n).fill(0).map((_,i) => i)
+    this.size = new Array(n).fill(1)
   }
 
   root = i => {
     while(i !== this.id[i]) {
+      this.id[i] = this.id[this.id[i]]
       i = this.id[i]
     }
     return i
@@ -14,7 +16,14 @@ class QuickUnion {
   union = (p, q) => {
     const proot = this.root(p)
     const qroot = this.root(q)
-    this.id[proot] = qroot
+    if(proot === qroot) return
+    if(this.size[proot] < this.size[qroot]) {
+      this.id[proot] = qroot
+      this.size[qroot] += this.size[proot]
+    } else {
+      this.id[qroot] = proot
+      this.size[proot] += this.size[qroot]
+    }
   }
 
   connected = (p, q) => this.root(p) === this.root(q)
@@ -25,4 +34,4 @@ class QuickUnion {
 
 }
 
-export default QuickUnion
+export default PathCompressedQuickUnion
